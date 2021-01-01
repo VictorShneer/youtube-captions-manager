@@ -1,16 +1,16 @@
-from flask import Flask
+from flask import Flask, render_template
 import time
 import requests
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import NoTranscriptFound, TranscriptsDisabled
 
-app = Flask(__name__, static_folder='../build', static_url_path = '/')
+app = Flask(__name__, static_folder='../build', static_url_path = '/', template_folder='../build')
 
 
 @app.route('/index')
 @app.route('/')
 def index():
-	return app.send_static_file('index.html')
+	return render_template('index.html')
 
 @app.route('/api/time')
 def current_time():
