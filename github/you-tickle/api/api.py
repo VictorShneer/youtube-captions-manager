@@ -7,10 +7,13 @@ from youtube_transcript_api._errors import NoTranscriptFound, TranscriptsDisable
 app = Flask(__name__, static_folder='../build', static_url_path = '/', template_folder='../build')
 
 
-@app.route('/index')
 @app.route('/')
 def index():
 	return render_template('index.html')
+
+@app.route('/index')
+def root():
+	return app.send_static_file('index.html')
 
 @app.route('/api/time')
 def current_time():
