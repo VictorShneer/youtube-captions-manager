@@ -4,7 +4,11 @@ import requests
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import NoTranscriptFound, TranscriptsDisabled
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../build', static_url_path = '/')
+
+@app.route('/')
+def index():
+	return app.send_static_file('index.html')
 
 @app.route('/api/time')
 def current_time():
