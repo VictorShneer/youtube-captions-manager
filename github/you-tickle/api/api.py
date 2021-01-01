@@ -6,6 +6,8 @@ from youtube_transcript_api._errors import NoTranscriptFound, TranscriptsDisable
 
 app = Flask(__name__, static_folder='../build', static_url_path = '/')
 
+
+@app.route('/index')
 @app.route('/')
 def index():
 	return app.send_static_file('index.html')
@@ -18,7 +20,7 @@ def current_time():
 def tickle(w):
 	r=requests.get('https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&type=video&regionCode=US&videoCaption=closedCaption&key=AIzaSyAse2tC8PBhU3vS9Vidu6JxqQSP7GSvHNw')
 	video_ids = [r['id']['videoId'] for r in r.json()['items']]
-
+	print('hey')
 	for step,vid in enumerate(video_ids):
 		try:
 			v_transcript = YouTubeTranscriptApi.get_transcript(vid)
