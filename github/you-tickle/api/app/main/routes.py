@@ -1,6 +1,6 @@
-from app.main import bp
-from app.models import Task
-from app.models import Token
+from api.app.main import bp
+from api.app.models import Task
+from api.app.models import Token
 from flask import render_template
 import time
 import requests

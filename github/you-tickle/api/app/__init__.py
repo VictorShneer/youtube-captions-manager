@@ -4,9 +4,16 @@ from logging.handlers import RotatingFileHandler
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from config import Config
+from api.config import Config
 from redis import Redis
 import rq
+
+import os
+from dotenv import load_dotenv
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, 'con.env'))
+
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -19,10 +26,10 @@ def create_app(config_class=Config):
     migrate.init_app(app,db)
 
     # blueprint
-    from app.main import bp as main_bp
+    from api.app.main import bp as main_bp
     app.register_blueprint(main_bp)
     # blueprint
-    from app.tasks import bp as tasks_bp
+    from api.app.tasks import bp as tasks_bp
     app.register_blueprint(tasks_bp)
 
     app.redis = Redis.from_url(app.config['REDISTOGO_URL'])
@@ -30,4 +37,4 @@ def create_app(config_class=Config):
 
     return app
 
-from app import models
+from api.app import models

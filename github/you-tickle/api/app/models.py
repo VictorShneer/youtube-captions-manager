@@ -1,4 +1,4 @@
-from app import db
+from api.app import db
 from flask import current_app
 import redis
 import rq

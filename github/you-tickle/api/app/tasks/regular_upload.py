@@ -1,11 +1,11 @@
 from flask import current_app
-from app.models import Token
-from app.main.utils import request_new_token
-from app.main.utils import write_captions
-from app.tasks.youtube_api_hub import get_video_bunch
-from app.tasks.youtube_api_hub import build_captions_list
-from app import create_app
-from app import db
+from api.app.models import Token
+from api.app.main.utils import request_new_token
+from api.app.main.utils import write_captions
+from api.app.tasks.youtube_api_hub import get_video_bunch
+from api.app.tasks.youtube_api_hub import build_captions_list
+from api.app import create_app
+from api.app import db
 import datetime
 
 app = create_app()
