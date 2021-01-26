@@ -6,7 +6,7 @@ topic_ids = ["/m/04rlf","/m/05fw6t","/m/02mscn","/m/0ggq0m","/m/01lyv","/m/02lkt
 
 def get_video_bunch():
 
-    DEVELOPER_KEY = 'AIzaSyCA5YLec8POrKXKGn2459FGTcFlTh-EDGw'
+    DEVELOPER_KEY = '***'
     YOUTUBE_API_SERVICE_NAME = 'youtube'
     YOUTUBE_API_VERSION = 'v3'
 
